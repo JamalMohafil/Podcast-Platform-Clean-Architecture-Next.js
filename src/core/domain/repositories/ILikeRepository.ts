@@ -1,7 +1,7 @@
 import { Like } from "../entities/Like";
 
 export interface ILikeRepository {
-  create: (like: Like) => Promise<Like>;
+  create: (like: Like) => Promise<boolean>;
   delete: (userId: string, commentId: string) => Promise<boolean>;
   getLikesByCommentId: (commentId: string) => Promise<Like[]>;
   checkIfUserLikedComment: (

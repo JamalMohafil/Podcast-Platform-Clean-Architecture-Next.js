@@ -6,7 +6,7 @@ import prisma from "../database/prisma";
 import { likeMapper } from "../mappers/likeMapper";
 
 export const likeRepository: ILikeRepository = {
-  create: async (like: Like): Promise<Like> => {
+  create: async (like: Like) => {
     try {
       const data = likeMapper.toPersistence(like);
 
@@ -16,8 +16,8 @@ export const likeRepository: ILikeRepository = {
           comment_id: data.comment_id,
         },
       });
-
-      return likeMapper.toDomain(createdLike);
+      
+      return true;
     } catch (error: any) {
       // Handle unique constraint violation - user already liked this comment
       if (error.code === "P2002") {

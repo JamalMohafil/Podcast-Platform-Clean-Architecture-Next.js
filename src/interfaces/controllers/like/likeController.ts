@@ -13,13 +13,13 @@ export const LikeController = {
     if (!commentId) {
       throw new NotFoundError("Comment ID is required");
     }
-
+    console.log(commentId,user)
     const result = await likeUseCases.toggleLike(user.id, commentId);
     const likesCount = await likeUseCases.getLikesCount(commentId);
-
+    console.log(result,'ireujsrkgd,fb')
     return {
       action: result.action,
-      likesCount,
+    //   likesCount,
     };
   },
 

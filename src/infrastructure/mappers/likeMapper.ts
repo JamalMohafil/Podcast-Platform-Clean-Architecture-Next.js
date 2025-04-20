@@ -2,7 +2,6 @@ import { Like } from "../../core/domain/entities/Like";
 
 export const likeMapper = {
   toDomain: (dbLike: any): Like => {
-    console.log("dbLike", dbLike);
     return {
       id: dbLike.id,
       user_id: dbLike.user_id,

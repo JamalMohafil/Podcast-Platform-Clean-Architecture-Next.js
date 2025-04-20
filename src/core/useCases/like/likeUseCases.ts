@@ -13,7 +13,7 @@ export const likeUseCases = {
       userId,
       commentId
     );
-
+    console.log("Already liked:", commentId, userId);
     if (alreadyLiked) {
       // If already liked, unlike it
       await likeRepository.delete(userId, commentId);
@@ -25,7 +25,8 @@ export const likeUseCases = {
         userId,
         commentId
       );
-      await likeRepository.create(newLike);
+      console.log("Liked:", newLike, userId);
+     const createdLike = await likeRepository.create(newLike);
       return { action: "liked" };
     }
   },
